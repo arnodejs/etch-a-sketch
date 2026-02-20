@@ -7,10 +7,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 30px;
 }
 
 #container {
   max-width: 500px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -19,4 +22,15 @@ body {
 .square {
   border: 1px solid #ccc;
   aspect-ratio: 1;
+}
+
+#square-size {
+  outline: none;
+  border: none;
+  background-color: chocolate;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 22px;
 }
