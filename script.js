@@ -9,6 +9,7 @@ const btnsContainer = document.querySelector('.buttons-container');
 let initialColor = setColorInput.value;
 const initialSquares = 16;
 const initialSquareWidth = 100 / 16;
+let isMouseDown = false;
 
 function handleSquareSize() {
   const size = +prompt('Enter square size', 16);
@@ -70,10 +71,22 @@ board.addEventListener('mouseover', (e) => {
 
   e.stopPropagation();
 
-  target.addEventListener('mouseenter', (e) => {
-    console.log(initialColor);
-    e.currentTarget.style.backgroundColor = initialColor;
+  target.addEventListener('click', (e) => {
+    target.style.backgroundColor = initialColor;
   });
+
+  target.addEventListener('mousedown', (e) => {
+    isMouseDown = true;
+  });
+
+  target.addEventListener('mouseup', (e) => {
+    e.stopPropagation();
+    isMouseDown = false;
+  });
+
+  if (isMouseDown) {
+    target.style.backgroundColor = initialColor;
+  }
 });
 
 setRandomBtn.addEventListener('click', handleColor);
@@ -87,5 +100,3 @@ function convertToHex(color) {
 
   return hex.padStart(2, 0);
 }
-
-convertToHex(180);
